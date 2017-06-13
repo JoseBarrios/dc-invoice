@@ -1,6 +1,6 @@
 {
   "name": "@josebarrios/invoice",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Invoice class that conforms to Schema.org",
   "main": "index.js",
   "scripts": {

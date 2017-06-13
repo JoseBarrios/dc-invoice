@@ -3,7 +3,7 @@ class Invoice {
   constructor(model){
     model = model || {};
     this.model = model;
-    this.accountID = model.accountID || model.accountId;
+    this.accountId = model.accountID || model.accountId;
     this.billingPeriod = model.billingPeriod;
     this.broker = model.broker; //Person or Organization
     this.category = model.category;
@@ -20,10 +20,16 @@ class Invoice {
     this.totalPaymentDue = model.totalPaymentDue;
   }
 
-  get accountId(){ return this.model.accountID || this.model.accountId;}
+  get accountId(){ return this.model.accountID;}
   set accountId(value){
     if(!value) return;
-    this.model.accountId = value;
+    this.model.accountID = value;
+  }
+
+  get accountID(){ return this.model.accountID;}
+  set accountID(value){
+    if(!value) return;
+    this.model.accountID = value;
   }
   get billingPeriod(){ return this.model.billingPeriod;}
   set billingPeriod(value){
@@ -95,6 +101,9 @@ class Invoice {
     if(!value) return;
     this.model.totalPaymentDue = value;
   }
+
+
+  //WHEN RETURNING, WATCH OUT FOR Id vs ID
 }
 
 module.exports = Invoice;
