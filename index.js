@@ -2,7 +2,7 @@ class Invoice {
 
   constructor(model){
     model = model || {};
-    this.model = model;
+    this.model = {};
     this.accountId = model.accountID || model.accountId;
     this.billingPeriod = model.billingPeriod;
     this.broker = model.broker; //Person or Organization
@@ -102,6 +102,10 @@ class Invoice {
     this.model.totalPaymentDue = value;
   }
 
+  serialize(){
+    let string = JSON.stringify(this);
+    return JSON.parse(string);
+  }
 
   //WHEN RETURNING, WATCH OUT FOR Id vs ID
 }
