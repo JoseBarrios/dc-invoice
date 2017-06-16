@@ -1,8 +1,11 @@
-class Invoice {
+const Intangible = require('@josebarrios/intangible')
+
+class Invoice extends Intangible {
 
   constructor(model){
     model = model || {};
-    this.model = {};
+    super(model);
+
     this.accountId = model.accountID || model.accountId;
     this.billingPeriod = model.billingPeriod;
     this.broker = model.broker; //Person or Organization
@@ -100,11 +103,6 @@ class Invoice {
   set totalPaymentDue(value){
     if(!value) return;
     this.model.totalPaymentDue = value;
-  }
-
-  serialize(){
-    let string = JSON.stringify(this);
-    return JSON.parse(string);
   }
 
   //WHEN RETURNING, WATCH OUT FOR Id vs ID
