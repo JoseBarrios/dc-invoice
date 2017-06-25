@@ -49,7 +49,7 @@ class Invoice extends Multiple(Thing, Intangible) {
     if(!value) return;
     this.model.billingPeriod = value;
   }
-  get booker(){ return this.model.booker;}
+  get broker(){ return this.model.broker;}
   set broker(value){
     if(!value) return;
     this.model.broker = value;
