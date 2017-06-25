@@ -1,6 +1,12 @@
+const Thing = require('@josebarrios/thing')
 const Intangible = require('@josebarrios/intangible')
+const Multiple = require('aggregation/es6');
+const EMPTY = '';
+const TYPE = 'Invoice'
 
-class Invoice extends Intangible {
+class Invoice extends Multiple(Thing, Intangible) {
+
+  static get type(){ return TYPE; }
 
   constructor(model){
     model = model || {};
@@ -22,6 +28,10 @@ class Invoice extends Intangible {
     this.scheduledPaymentDate = model.scheduledPaymentDate;
     this.totalPaymentDue = model.totalPaymentDue;
   }
+
+  get type(){ return TYPE; }
+  set type(value) {}
+
 
   get accountId(){ return this.model.accountID;}
   set accountId(value){
