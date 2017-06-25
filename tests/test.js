@@ -20,14 +20,15 @@ model.referencesOrder = ['ORD001', 'ORD002'];
 model.scheduledPaymentDate = 1234;
 model.totalPaymentDue = 1000;
 let invoice = new Invoice(model);
+console.log(invoice.model)
+console.log(Invoice.keys(invoice))
 
 const key = {};
 key.totalPaymentDue = 1000;
 
 
 describe('#constructor', function() {
-  it('should ...', function() {
-    let invoice = new Invoice(model);
-    assert.equal(invoice.totalPaymentDue, key.totalPaymentDue);
+  it('TODO', function() {
+    assert.equal(true, false);
   });
 });

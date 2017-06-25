@@ -33,86 +33,86 @@ class Invoice extends Multiple(Thing, Intangible) {
   set type(value) {}
 
 
-  get accountId(){ return this.model.accountID;}
+  get accountId(){ return this.computed.accountID;}
   set accountId(value){
     if(!value) return;
-    this.model.accountID = value;
+    this.computed.accountID = value;
   }
 
-  get accountID(){ return this.model.accountID;}
+  get accountID(){ return this.computed.accountID;}
   set accountID(value){
     if(!value) return;
-    this.model.accountID = value;
+    this.computed.accountID = value;
   }
-  get billingPeriod(){ return this.model.billingPeriod;}
+  get billingPeriod(){ return this.computed.billingPeriod;}
   set billingPeriod(value){
     if(!value) return;
-    this.model.billingPeriod = value;
+    this.computed.billingPeriod = value;
   }
-  get broker(){ return this.model.broker;}
+  get broker(){ return this.computed.broker;}
   set broker(value){
     if(!value) return;
-    this.model.broker = value;
+    this.computed.broker = value;
   }
-  get category(){ return this.model.category;}
+  get category(){ return this.computed.category;}
   set category(value){
     if(!value) return;
-    this.model.category = value;
+    this.computed.category = value;
   }
-  get confirmationNumber(){ return this.model.confirmationNumber;}
+  get confirmationNumber(){ return this.computed.confirmationNumber;}
   set confirmationNumber(value){
     if(!value) return;
-    this.model.confirmationNumber = value;
+    this.computed.confirmationNumber = value;
   }
-  get customer(){ return this.model.customer;}
+  get customer(){ return this.computed.customer;}
   set customer(value){
     if(!value) return;
-    this.model.customer = value;
+    this.computed.customer = value;
   }
-  get minimumPaymentDue(){ return this.model.minimumPaymentDue;}
+  get minimumPaymentDue(){ return this.computed.minimumPaymentDue;}
   set minimumPaymentDue(value){
     if(!value) return;
-    this.model.minimumPaymentDue = value;
+    this.computed.minimumPaymentDue = value;
   }
-  get paymentDueDate(){ return this.model.paymentDueDate;}
+  get paymentDueDate(){ return this.computed.paymentDueDate;}
   set paymentDueDate(value){
     if(!value) return;
-    this.model.paymentDueDate = value;
+    this.computed.paymentDueDate = value;
   }
-  get paymentMethod(){ return this.model.paymentMethod;}
+  get paymentMethod(){ return this.computed.paymentMethod;}
   set paymentMethod(value){
     if(!value) return;
-    this.model.paymentMethod = value;
+    this.computed.paymentMethod = value;
   }
-  get paymentMethodId(){ return this.model.paymentMethodId;}
+  get paymentMethodId(){ return this.computed.paymentMethodId;}
   set paymentMethodId(value){
     if(!value) return;
-    this.model.paymentMethodId = value;
+    this.computed.paymentMethodId = value;
   }
-  get paymentStatus(){ return this.model.paymentStatus;}
+  get paymentStatus(){ return this.computed.paymentStatus;}
   set paymentStatus(value){
     if(!value) return;
-    this.model.paymentStatus = value;
+    this.computed.paymentStatus = value;
   }
-  get provider(){ return this.model.provider;}
+  get provider(){ return this.computed.provider;}
   set provider(value){
     if(!value) return;
-    this.model.provider = value;
+    this.computed.provider = value;
   }
-  get referencesOrder(){ return this.model.referencesOrder;}
+  get referencesOrder(){ return this.computed.referencesOrder;}
   set referencesOrder(value){
     if(!value) return;
-    this.model.referencesOrder = value;
+    this.computed.referencesOrder = value;
   }
-  get scheduledPaymentDate(){ return this.model.scheduledPaymentDate;}
+  get scheduledPaymentDate(){ return this.computed.scheduledPaymentDate;}
   set scheduledPaymentDate(value){
     if(!value) return;
-    this.model.scheduledPaymentDate = value;
+    this.computed.scheduledPaymentDate = value;
   }
-  get totalPaymentDue(){ return this.model.totalPaymentDue;}
+  get totalPaymentDue(){ return this.computed.totalPaymentDue;}
   set totalPaymentDue(value){
     if(!value) return;
-    this.model.totalPaymentDue = value;
+    this.computed.totalPaymentDue = value;
   }
 
   //WHEN RETURNING, WATCH OUT FOR Id vs ID
