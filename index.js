@@ -35,83 +35,83 @@ class Invoice extends Multiple(Thing, Intangible) {
 
   get accountId(){ return this.computed.accountID;}
   set accountId(value){
-    if(!value) return;
+    if(Thing.isEmpty(value)){ this.computed.accountID = EMPTY}
     this.computed.accountID = value;
   }
 
   get accountID(){ return this.computed.accountID;}
   set accountID(value){
-    if(!value) return;
+    if(Thing.isEmpty(value)){ this.computed.accountID = EMPTY}
     this.computed.accountID = value;
   }
   get billingPeriod(){ return this.computed.billingPeriod;}
   set billingPeriod(value){
-    if(!value) return;
+    if(Thing.isEmpty(value)){ this.computed.billingPeriod = EMPTY}
     this.computed.billingPeriod = value;
   }
   get broker(){ return this.computed.broker;}
   set broker(value){
-    if(!value) return;
+    if(Thing.isEmpty(value)){ this.computed.broker = EMPTY}
     this.computed.broker = value;
   }
   get category(){ return this.computed.category;}
   set category(value){
-    if(!value) return;
+    if(Thing.isEmpty(value)){ this.computed.category = EMPTY}
     this.computed.category = value;
   }
   get confirmationNumber(){ return this.computed.confirmationNumber;}
   set confirmationNumber(value){
-    if(!value) return;
+    if(Thing.isEmpty(value)){ this.computed.confirmationNumber = EMPTY}
     this.computed.confirmationNumber = value;
   }
   get customer(){ return this.computed.customer;}
   set customer(value){
-    if(!value) return;
+    if(Thing.isEmpty(value)){ this.computed.customer = EMPTY}
     this.computed.customer = value;
   }
   get minimumPaymentDue(){ return this.computed.minimumPaymentDue;}
   set minimumPaymentDue(value){
-    if(!value) return;
+    if(Thing.isEmpty(value)){ this.computed.minimumPaymentDue = EMPTY}
     this.computed.minimumPaymentDue = value;
   }
   get paymentDueDate(){ return this.computed.paymentDueDate;}
   set paymentDueDate(value){
-    if(!value) return;
+    if(Thing.isEmpty(value)){ this.computed.paymentDueDate = EMPTY}
     this.computed.paymentDueDate = value;
   }
   get paymentMethod(){ return this.computed.paymentMethod;}
   set paymentMethod(value){
-    if(!value) return;
+    if(Thing.isEmpty(value)){ this.computed.paymentMethod = EMPTY}
     this.computed.paymentMethod = value;
   }
   get paymentMethodId(){ return this.computed.paymentMethodId;}
   set paymentMethodId(value){
-    if(!value) return;
+    if(Thing.isEmpty(value)){ this.computed.paymentMethodId = EMPTY}
     this.computed.paymentMethodId = value;
   }
   get paymentStatus(){ return this.computed.paymentStatus;}
   set paymentStatus(value){
-    if(!value) return;
+    if(Thing.isEmpty(value)){ this.computed.paymentStatus = EMPTY}
     this.computed.paymentStatus = value;
   }
   get provider(){ return this.computed.provider;}
   set provider(value){
-    if(!value) return;
+    if(Thing.isEmpty(value)){ this.computed.provider = EMPTY}
     this.computed.provider = value;
   }
   get referencesOrder(){ return this.computed.referencesOrder;}
   set referencesOrder(value){
-    if(!value) return;
+    if(Thing.isEmpty(value)){ this.computed.referencesOrder = EMPTY}
     this.computed.referencesOrder = value;
   }
   get scheduledPaymentDate(){ return this.computed.scheduledPaymentDate;}
   set scheduledPaymentDate(value){
-    if(!value) return;
+    if(Thing.isEmpty(value)){ this.computed.scheduledPaymentDate = EMPTY}
     this.computed.scheduledPaymentDate = value;
   }
   get totalPaymentDue(){ return this.computed.totalPaymentDue;}
   set totalPaymentDue(value){
-    if(!value) return;
+    if(Thing.isEmpty(value)){ this.computed.totalPaymentDue = EMPTY}
     this.computed.totalPaymentDue = value;
   }
 
