@@ -52,8 +52,8 @@ class Invoice extends Multiple(Thing, Intangible) {
   get broker(){ return this.computed.broker;}
   set broker(value){
     if(Thing.isEmpty(value)){ this.computed.broker = EMPTY}
-    else if(Thing.isString(value)){ this.computed.address = value }
-    else if(Thing.isObject(value)){ this.computed.address = value }
+    else if(Thing.isString(value)){ this.computed.broker = value }
+    else if(Thing.isObject(value)){ this.computed.broker = value }
     else{ Thing.logError(this.type+' broker must be string or object'); }
   }
   get category(){ return this.computed.category;}
