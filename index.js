@@ -58,27 +58,18 @@ class Invoice extends Multiple(Thing, Intangible) {
   set billingPeriod(period){
     if(Thing.isPlainObject(period)){
       this.computed.billingPeriod =  this.computed.billingPeriod || {};
+
       if(Thing.isEmpty(period.start)){
         this.computed.billingPeriod.start = EMPTY;
-      }
-      else if(Thing.isNumber(period.start)){
+      } else if(Thing.isString(period.start)){
         this.computed.billingPeriod.start = period.start;
-      }
-      else if(Thing.isString(period.start)){
-        this.computed.billingPeriod.start = period.start;
-      }
-      else{ Thing.logError(this.type+' billingPeriod (start) must be a number'); }
+      } else{ Thing.logError(this.type+' billingPeriod (start) must be a number'); }
 
       if(Thing.isEmpty(period.end)){
         this.computed.billingPeriod.end = EMPTY;
-      }
-      else if(Thing.isNumber(period.end)){
+      } else if(Thing.isString(period.end)){
         this.computed.billingPeriod.end = period.end;
-      }
-      else if(Thing.isString(period.end)){
-        this.computed.billingPeriod.end = period.end;
-      }
-      else{ Thing.logError(this.type+' billingPeriod (end) must be a number'); }
+      } else{ Thing.logError(this.type+' billingPeriod (end) must be a number'); }
     }
     else {
         this.computed.billingPeriod =  this.computed.billingPeriod || {};
@@ -127,7 +118,7 @@ class Invoice extends Multiple(Thing, Intangible) {
   set paymentDueDate(value){
     if(Thing.isEmpty(value)){ this.computed.paymentDueDate = EMPTY}
     else if(Thing.isString(value)){ this.computed.paymentDueDate = value }
-    else{ Thing.logError(this.type+' paymentDueDate must be a number, or string'); }
+    else{ Thing.logError(this.type+' paymentDueDate must be a string'); }
   }
   get paymentMethod(){ return this.computed.paymentMethod;}
   set paymentMethod(value){
@@ -159,7 +150,8 @@ class Invoice extends Multiple(Thing, Intangible) {
   get scheduledPaymentDate(){ return this.computed.scheduledPaymentDate;}
   set scheduledPaymentDate(value){
     if(Thing.isEmpty(value)){ this.computed.scheduledPaymentDate = EMPTY}
-    this.computed.scheduledPaymentDate = value;
+    else if(Thing.isString(value)){ this.computed.scheduledPaymentDate = value }
+    else{ Thing.logError(this.type+' scheduledPaymentDate must be a string'); }
   }
   get totalPaymentDue(){ return this.computed.totalPaymentDue;}
   set totalPaymentDue(value){
