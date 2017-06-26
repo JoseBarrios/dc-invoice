@@ -69,7 +69,9 @@ class Invoice extends Multiple(Thing, Intangible) {
   get customer(){ return this.computed.customer;}
   set customer(value){
     if(Thing.isEmpty(value)){ this.computed.customer = EMPTY}
-    this.computed.customer = value;
+    else if(Thing.isString(value)){ this.computed.customer = value }
+    else if(Thing.isObject(value)){ this.computed.customer = value }
+    else{ Thing.logError(this.type+' customer must be string or object'); }
   }
   get minimumPaymentDue(){ return this.computed.minimumPaymentDue;}
   set minimumPaymentDue(value){
