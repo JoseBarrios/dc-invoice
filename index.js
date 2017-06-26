@@ -62,7 +62,9 @@ class Invoice extends Multiple(Thing, Intangible) {
         this.computed.billingPeriod.start = EMPTY;
       }
       else if(Thing.isNumber(period.start)){
-        this.computed.billingPeriod = {};
+        this.computed.billingPeriod.start = period.start;
+      }
+      else if(Thing.isString(period.start)){
         this.computed.billingPeriod.start = period.start;
       }
       else{ Thing.logError(this.type+' billingPeriod (start) must be a number'); }
@@ -71,6 +73,9 @@ class Invoice extends Multiple(Thing, Intangible) {
         this.computed.billingPeriod.end = EMPTY;
       }
       else if(Thing.isNumber(period.end)){
+        this.computed.billingPeriod.end = period.end;
+      }
+      else if(Thing.isString(period.end)){
         this.computed.billingPeriod.end = period.end;
       }
       else{ Thing.logError(this.type+' billingPeriod (end) must be a number'); }
@@ -109,7 +114,8 @@ class Invoice extends Multiple(Thing, Intangible) {
   set dateSent(value){
     if(Thing.isEmpty(value)){ this.computed.dateSent = EMPTY}
     else if(Thing.isNumber(value)){ this.computed.dateSent = value }
-    else{ Thing.logError(this.type+' dateSent must be a number'); }
+    else if(Thing.isString(value)){ this.computed.dateSent = value }
+    else{ Thing.logError(this.type+' dateSent must be a number, or string'); }
   }
 
   get minimumPaymentDue(){ return this.computed.minimumPaymentDue;}
@@ -120,7 +126,8 @@ class Invoice extends Multiple(Thing, Intangible) {
   get paymentDueDate(){ return this.computed.paymentDueDate;}
   set paymentDueDate(value){
     if(Thing.isEmpty(value)){ this.computed.paymentDueDate = EMPTY}
-    this.computed.paymentDueDate = value;
+    else if(Thing.isString(value)){ this.computed.paymentDueDate = value }
+    else{ Thing.logError(this.type+' paymentDueDate must be a number, or string'); }
   }
   get paymentMethod(){ return this.computed.paymentMethod;}
   set paymentMethod(value){

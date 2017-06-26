@@ -5,14 +5,14 @@ var Invoice = require('../index.js');
 
 var model = {};
 //model.accountId = 'ACCOUNT_ID';
-model.billingPeriod = {start:1493622000000, end:1496300400000};
+model.billingPeriod = {start:'2017-07-01', end:'2017-07-01'};
 //model.broker = 'PERSON_ORG_ID'; //Person or Organization
 //model.category = 'CATEGORY';
 //model.confirmationNumber = 'CONFIRMATION_NUM';
 //model.customer = 'PERSON_ORG_ID'; //Person or Organization
 model.minimumPaymentDue = 0;
-model.paymentDueDate = 1498892400000;
-model.sentDate = 1498374000000;
+model.paymentDueDate = '2017-07-01';
+model.dateSent = '2017-07-01';
 //model.paymentMethod = 'VISA';
 //model.paymentMethodId = '**** **** **** 4444';
 //model.paymentStatus = 'Paid';
