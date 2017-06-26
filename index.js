@@ -168,6 +168,12 @@ class Invoice extends Multiple(Thing, Intangible) {
   }
 
   //WHEN RETURNING, WATCH OUT FOR Id vs ID
+  set formattedTotal(value){};
+  get formattedTotal(){
+    let amount = `$${(this.computed.totalPaymentDue/100).toFixed(2)}`;
+    return amount.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"); ;
+  }
+
 }
 
 module.exports = Invoice;

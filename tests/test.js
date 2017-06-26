@@ -19,16 +19,15 @@ model.dateSent = '2017-07-01';
 //model.provider = 'PERSON_ORG_ID'; //Person or Organization
 //model.referencesOrder = ['ORD001', 'ORD002'];
 //model.scheduledPaymentDate = 1234;
-model.totalPaymentDue = 1000;
+model.totalPaymentDue = 1000000;
 let invoice = new Invoice(model);
 
 const key = {};
 key.totalPaymentDue = 1000;
 
 
-describe('#constructor', function() {
-  it('TODO', function() {
-    console.log(invoice)
-    assert.equal(true, false);
+describe('Instance Methods', function() {
+  it('#total', function() {
+    assert.equal(invoice.formattedTotal, '$10,000.00');
   });
 });
