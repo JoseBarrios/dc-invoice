@@ -18,6 +18,8 @@ class Invoice extends Multiple(Thing, Intangible) {
     this.category = model.category;
     this.confirmationNumber = model.confirmationNumber;
     this.customer = model.customer; //Person or Organization
+    //NOT STANDARD (dateSent)
+    this.dateSent = model.dateSent; //Person or Organization
     this.minimumPaymentDue = model.minimumPaymentDue;
     this.paymentDueDate = model.paymentDueDate;
     this.paymentMethod = model.paymentMethod;
@@ -27,6 +29,9 @@ class Invoice extends Multiple(Thing, Intangible) {
     this.referencesOrder = model.referencesOrder;
     this.scheduledPaymentDate = model.scheduledPaymentDate;
     this.totalPaymentDue = model.totalPaymentDue;
+
+    //OTHERS
+    this.identifier = `INV-${Date.now()}`;
   }
 
   get type(){ return TYPE; }
@@ -44,10 +49,37 @@ class Invoice extends Multiple(Thing, Intangible) {
     if(Thing.isEmpty(value)){ this.computed.accountID = EMPTY}
     this.computed.accountID = value;
   }
-  get billingPeriod(){ return this.computed.billingPeriod;}
-  set billingPeriod(value){
-    if(Thing.isEmpty(value)){ this.computed.billingPeriod = EMPTY}
-    this.computed.billingPeriod = value;
+  get billingPeriod(){
+    let period = {};
+    period.start = this.computed.billingPeriod.start;
+    period.end = this.computed.billingPeriod.end;
+    return period;
+  }
+  set billingPeriod(period){
+    if(Thing.isPlainObject(period)){
+      this.computed.billingPeriod =  this.computed.billingPeriod || {};
+      if(Thing.isEmpty(period.start)){
+        this.computed.billingPeriod.start = EMPTY;
+      }
+      else if(Thing.isNumber(period.start)){
+        this.computed.billingPeriod = {};
+        this.computed.billingPeriod.start = period.start;
+      }
+      else{ Thing.logError(this.type+' billingPeriod (start) must be a number'); }
+
+      if(Thing.isEmpty(period.end)){
+        this.computed.billingPeriod.end = EMPTY;
+      }
+      else if(Thing.isNumber(period.end)){
+        this.computed.billingPeriod.end = period.end;
+      }
+      else{ Thing.logError(this.type+' billingPeriod (end) must be a number'); }
+    }
+    else {
+        this.computed.billingPeriod =  this.computed.billingPeriod || {};
+        this.computed.billingPeriod.start = EMPTY;
+        this.computed.billingPeriod.end = EMPTY;
+    }
   }
   get broker(){ return this.computed.broker;}
   set broker(value){
@@ -73,6 +105,13 @@ class Invoice extends Multiple(Thing, Intangible) {
     else if(Thing.isObject(value)){ this.computed.customer = value }
     else{ Thing.logError(this.type+' customer must be string or object'); }
   }
+  get dateSent(){ return this.computed.dateSent;}
+  set dateSent(value){
+    if(Thing.isEmpty(value)){ this.computed.dateSent = EMPTY}
+    else if(Thing.isNumber(value)){ this.computed.dateSent = value }
+    else{ Thing.logError(this.type+' dateSent must be a number'); }
+  }
+
   get minimumPaymentDue(){ return this.computed.minimumPaymentDue;}
   set minimumPaymentDue(value){
     if(Thing.isEmpty(value)){ this.computed.minimumPaymentDue = EMPTY}
@@ -101,7 +140,9 @@ class Invoice extends Multiple(Thing, Intangible) {
   get provider(){ return this.computed.provider;}
   set provider(value){
     if(Thing.isEmpty(value)){ this.computed.provider = EMPTY}
-    this.computed.provider = value;
+    else if(Thing.isString(value)){ this.computed.provider = value }
+    else if(Thing.isObject(value)){ this.computed.provider = value }
+    else{ Thing.logError(this.type+' provider must be string or object'); }
   }
   get referencesOrder(){ return this.computed.referencesOrder;}
   set referencesOrder(value){
