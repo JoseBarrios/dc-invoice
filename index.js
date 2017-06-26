@@ -31,7 +31,7 @@ class Invoice extends Multiple(Thing, Intangible) {
     this.totalPaymentDue = model.totalPaymentDue;
 
     //OTHERS
-    this.identifier = `INV-${Date.now()}`;
+    this.identifier = `${Date.now()}`;
   }
 
   get type(){ return TYPE; }
