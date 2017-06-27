@@ -19,7 +19,14 @@ model.dateSent = '2017-07-01';
 //model.provider = 'PERSON_ORG_ID'; //Person or Organization
 //model.referencesOrder = ['ORD001', 'ORD002'];
 //model.scheduledPaymentDate = 1234;
-model.totalPaymentDue = 1000000;
+
+let Order = require('@josebarrios/order');
+let orderedItem = [{description:'x', price:20, orderQuantity:2}, {description:'y', price:10, orderQuantity:6}]
+let submodel = {};
+submodel.orderedItem = orderedItem;
+model.referencesOrder = new Order(submodel)
+
+//model.totalPaymentDue = 1000000;
 let invoice = new Invoice(model);
 
 const key = {};
@@ -27,7 +34,13 @@ key.totalPaymentDue = 1000;
 
 
 describe('Instance Methods', function() {
-  it('#total', function() {
-    assert.equal(invoice.formattedTotal, '$10,000.00');
+  //it('#total', function() {
+    //assert.equal(invoice.formattedTotal, '$10,000.00');
+  //});
+  //it('Invoice.isNumber', function() {
+    //assert.equal(Invoice.isNumber(1), true);
+  //});
+  it('invoice.totalPaymentDue', function() {
+    assert.equal(invoice.totalPaymentDue, 100);
   });
 });
