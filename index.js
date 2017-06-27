@@ -163,9 +163,8 @@ class Invoice extends Multiple(Thing, Intangible) {
   }
 
   //WHEN RETURNING, WATCH OUT FOR Id vs ID
-  set totalFormatted(value){};
-  get totalFormatted(){
-    let amount = `$${(this.computed.totalPaymentDue/100).toFixed(2)}`;
+  totalFormatted(symbol, currency){
+    let amount = `${symbol?symbol:''}${(this.totalPaymentDue/100).toFixed(2)}${currency? currency : ''}`;
     return amount.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"); ;
   }
 
