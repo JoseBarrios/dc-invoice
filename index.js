@@ -40,13 +40,13 @@ class Invoice extends Multiple(Thing, Intangible) {
 
   get accountId(){ return this.computed.accountID;}
   set accountId(value){
-    if(Intangible.isEmpty(value)){ this.computed.accountID = EMPTY}
+    if(Thing.isEmpty(value)){ this.computed.accountID = EMPTY}
     this.computed.accountID = value;
   }
 
   get accountID(){ return this.computed.accountID;}
   set accountID(value){
-    if(Intangible.isEmpty(value)){ this.computed.accountID = EMPTY}
+    if(Thing.isEmpty(value)){ this.computed.accountID = EMPTY}
     this.computed.accountID = value;
   }
   get billingPeriod(){
@@ -56,20 +56,20 @@ class Invoice extends Multiple(Thing, Intangible) {
     return period;
   }
   set billingPeriod(period){
-    if(Intangible.isPlainObject(period)){
+    if(Thing.isPlainObject(period)){
       this.computed.billingPeriod =  this.computed.billingPeriod || {};
 
-      if(Intangible.isEmpty(period.start)){
+      if(Thing.isEmpty(period.start)){
         this.computed.billingPeriod.start = EMPTY;
-      } else if(Intangible.isString(period.start)){
+      } else if(Thing.isString(period.start)){
         this.computed.billingPeriod.start = period.start;
-      } else{ Intangible.logError(this.type+' billingPeriod (start) must be a number'); }
+      } else{ Thing.logError(this.type+' billingPeriod (start) must be a number'); }
 
-      if(Intangible.isEmpty(period.end)){
+      if(Thing.isEmpty(period.end)){
         this.computed.billingPeriod.end = EMPTY;
-      } else if(Intangible.isString(period.end)){
+      } else if(Thing.isString(period.end)){
         this.computed.billingPeriod.end = period.end;
-      } else{ Intangible.logError(this.type+' billingPeriod (end) must be a number'); }
+      } else{ Thing.logError(this.type+' billingPeriod (end) must be a number'); }
     }
     else {
         this.computed.billingPeriod =  this.computed.billingPeriod || {};
@@ -79,79 +79,79 @@ class Invoice extends Multiple(Thing, Intangible) {
   }
   get broker(){ return this.computed.broker;}
   set broker(value){
-    if(Intangible.isEmpty(value)){ this.computed.broker = EMPTY}
-    else if(Intangible.isString(value)){ this.computed.broker = value }
-    else if(Intangible.isObject(value)){ this.computed.broker = value }
-    else{ Intangible.logError(this.type+' broker must be string or object'); }
+    if(Thing.isEmpty(value)){ this.computed.broker = EMPTY}
+    else if(Thing.isString(value)){ this.computed.broker = value }
+    else if(Thing.isObject(value)){ this.computed.broker = value }
+    else{ Thing.logError(this.type+' broker must be string or object'); }
   }
   get category(){ return this.computed.category;}
   set category(value){
-    if(Intangible.isEmpty(value)){ this.computed.category = EMPTY}
+    if(Thing.isEmpty(value)){ this.computed.category = EMPTY}
     this.computed.category = value;
   }
   get confirmationNumber(){ return this.computed.confirmationNumber;}
   set confirmationNumber(value){
-    if(Intangible.isEmpty(value)){ this.computed.confirmationNumber = EMPTY}
+    if(Thing.isEmpty(value)){ this.computed.confirmationNumber = EMPTY}
     this.computed.confirmationNumber = value;
   }
   get customer(){ return this.computed.customer;}
   set customer(value){
-    if(Intangible.isEmpty(value)){ this.computed.customer = EMPTY}
-    else if(Intangible.isString(value)){ this.computed.customer = value }
-    else if(Intangible.isObject(value)){ this.computed.customer = value }
-    else{ Intangible.logError(this.type+' customer must be string or object'); }
+    if(Thing.isEmpty(value)){ this.computed.customer = EMPTY}
+    else if(Thing.isString(value)){ this.computed.customer = value }
+    else if(Thing.isObject(value)){ this.computed.customer = value }
+    else{ Thing.logError(this.type+' customer must be string or object'); }
   }
   get dateSent(){ return this.computed.dateSent;}
   set dateSent(value){
-    if(Intangible.isEmpty(value)){ this.computed.dateSent = EMPTY}
-    else if(Intangible.isNumber(value)){ this.computed.dateSent = value }
-    else if(Intangible.isString(value)){ this.computed.dateSent = value }
-    else{ Intangible.logError(this.type+' dateSent must be a number, or string'); }
+    if(Thing.isEmpty(value)){ this.computed.dateSent = EMPTY}
+    else if(Thing.isNumber(value)){ this.computed.dateSent = value }
+    else if(Thing.isString(value)){ this.computed.dateSent = value }
+    else{ Thing.logError(this.type+' dateSent must be a number, or string'); }
   }
 
   get minimumPaymentDue(){ return this.computed.minimumPaymentDue;}
   set minimumPaymentDue(value){
-    if(Intangible.isEmpty(value)){ this.computed.minimumPaymentDue = EMPTY}
+    if(Thing.isEmpty(value)){ this.computed.minimumPaymentDue = EMPTY}
     this.computed.minimumPaymentDue = value;
   }
   get paymentDueDate(){ return this.computed.paymentDueDate;}
   set paymentDueDate(value){
-    if(Intangible.isEmpty(value)){ this.computed.paymentDueDate = EMPTY}
-    else if(Intangible.isString(value)){ this.computed.paymentDueDate = value }
-    else{ Intangible.logError(this.type+' paymentDueDate must be a string'); }
+    if(Thing.isEmpty(value)){ this.computed.paymentDueDate = EMPTY}
+    else if(Thing.isString(value)){ this.computed.paymentDueDate = value }
+    else{ Thing.logError(this.type+' paymentDueDate must be a string'); }
   }
   get paymentMethod(){ return this.computed.paymentMethod;}
   set paymentMethod(value){
-    if(Intangible.isEmpty(value)){ this.computed.paymentMethod = EMPTY}
+    if(Thing.isEmpty(value)){ this.computed.paymentMethod = EMPTY}
     this.computed.paymentMethod = value;
   }
   get paymentMethodId(){ return this.computed.paymentMethodId;}
   set paymentMethodId(value){
-    if(Intangible.isEmpty(value)){ this.computed.paymentMethodId = EMPTY}
+    if(Thing.isEmpty(value)){ this.computed.paymentMethodId = EMPTY}
     this.computed.paymentMethodId = value;
   }
   get paymentStatus(){ return this.computed.paymentStatus;}
   set paymentStatus(value){
-    if(Intangible.isEmpty(value)){ this.computed.paymentStatus = EMPTY}
+    if(Thing.isEmpty(value)){ this.computed.paymentStatus = EMPTY}
     this.computed.paymentStatus = value;
   }
   get provider(){ return this.computed.provider;}
   set provider(value){
-    if(Intangible.isEmpty(value)){ this.computed.provider = EMPTY}
-    else if(Intangible.isString(value)){ this.computed.provider = value }
-    else if(Intangible.isObject(value)){ this.computed.provider = value }
-    else{ Intangible.logError(this.type+' provider must be string or object'); }
+    if(Thing.isEmpty(value)){ this.computed.provider = EMPTY}
+    else if(Thing.isString(value)){ this.computed.provider = value }
+    else if(Thing.isObject(value)){ this.computed.provider = value }
+    else{ Thing.logError(this.type+' provider must be string or object'); }
   }
   get referencesOrder(){ return this.computed.referencesOrder;}
   set referencesOrder(value){
-    if(Intangible.isEmpty(value)){ this.computed.referencesOrder = EMPTY}
+    if(Thing.isEmpty(value)){ this.computed.referencesOrder = EMPTY}
     this.computed.referencesOrder = value;
   }
   get scheduledPaymentDate(){ return this.computed.scheduledPaymentDate;}
   set scheduledPaymentDate(value){
-    if(Intangible.isEmpty(value)){ this.computed.scheduledPaymentDate = EMPTY}
-    else if(Intangible.isString(value)){ this.computed.scheduledPaymentDate = value }
-    else{ Intangible.logError(this.type+' scheduledPaymentDate must be a string'); }
+    if(Thing.isEmpty(value)){ this.computed.scheduledPaymentDate = EMPTY}
+    else if(Thing.isString(value)){ this.computed.scheduledPaymentDate = value }
+    else{ Thing.logError(this.type+' scheduledPaymentDate must be a string'); }
   }
   set totalPaymentDue(value){}
   get totalPaymentDue(){

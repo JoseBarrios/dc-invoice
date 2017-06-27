@@ -34,12 +34,12 @@ key.totalPaymentDue = 1000;
 
 
 describe('Instance Methods', function() {
-  //it('#total', function() {
-    //assert.equal(invoice.formattedTotal, '$10,000.00');
-  //});
-  //it('Invoice.isNumber', function() {
-    //assert.equal(Invoice.isNumber(1), true);
-  //});
+  it('#total', function() {
+    assert.equal(invoice.formattedTotal, '$10,000.00');
+  });
+  it('Invoice.isNumber', function() {
+    assert.equal(Invoice.isNumber(1), true);
+  });
   it('invoice.totalPaymentDue', function() {
     assert.equal(invoice.totalPaymentDue, 100);
   });
