@@ -13,6 +13,7 @@ model.billingPeriod = {start:'2017-07-01', end:'2017-07-01'};
 model.minimumPaymentDue = 0;
 model.paymentDueDate = '2017-07-01';
 model.dateSent = '2017-07-01';
+model.taxPercentage = 10;
 //model.paymentMethod = 'VISA';
 //model.paymentMethodId = '**** **** **** 4444';
 //model.paymentStatus = 'Paid';
@@ -31,13 +32,23 @@ const key = {};
 
 
 describe('Instance Methods', function() {
-  it('#total', function() {
-    assert.equal(invoice.totalFormatted('$'), '$10,000.00');
-  });
-  it('Invoice.isNumber', function() {
-    assert.equal(Invoice.isNumber(1), true);
+  it('instance.tax', function() {
+    assert.equal(invoice.taxPercentage, 10);
   });
   it('invoice.totalPaymentDue', function() {
-    assert.equal(invoice.totalPaymentDue, 1000000);
+    assert.equal(invoice.totalPaymentDue, 1100000);
+  });
+  it('#subTotal', function() {
+    assert.equal(invoice.subTotal(), '1000000');
+  });
+  it('#subTotalFormatted', function() {
+    assert.equal(invoice.subTotalFormatted('$'), '$10,000.00');
+  });
+  it('#totalFormatted', function() {
+    assert.equal(invoice.totalFormatted('$'), '$11,000.00');
+  });
+
+  it('Invoice.isNumber', function() {
+    assert.equal(Invoice.isNumber(1), true);
   });
 });

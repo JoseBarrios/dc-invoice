@@ -18,8 +18,6 @@ class Invoice extends Multiple(Thing, Intangible) {
     this.category = model.category;
     this.confirmationNumber = model.confirmationNumber;
     this.customer = model.customer; //Person or Organization
-    //NOT STANDARD (dateSent)
-    this.dateSent = model.dateSent; //Person or Organization
     this.minimumPaymentDue = model.minimumPaymentDue;
     this.paymentDueDate = model.paymentDueDate;
     this.paymentMethod = model.paymentMethod;
@@ -30,8 +28,12 @@ class Invoice extends Multiple(Thing, Intangible) {
     this.scheduledPaymentDate = model.scheduledPaymentDate;
     this.totalPaymentDue = model.totalPaymentDue;
 
-    //OTHERS
+    //INHERETED
     this.identifier = model.identifier || `${Math.floor(Date.now()/1000)}`;
+
+    //NOT STANDARD (dateSent)
+    this.dateSent = model.dateSent; //Person or Organization
+    this.taxPercentage = model.taxPercentage;
   }
 
   get type(){ return TYPE; }
@@ -101,14 +103,6 @@ class Invoice extends Multiple(Thing, Intangible) {
     else if(Thing.isObject(value)){ this.computed.customer = value }
     else{ Thing.logError(this.type+' customer must be string or object'); }
   }
-  get dateSent(){ return this.computed.dateSent;}
-  set dateSent(value){
-    if(Thing.isEmpty(value)){ this.computed.dateSent = EMPTY}
-    else if(Thing.isNumber(value)){ this.computed.dateSent = value }
-    else if(Thing.isString(value)){ this.computed.dateSent = value }
-    else{ Thing.logError(this.type+' dateSent must be a number, or string'); }
-  }
-
   get minimumPaymentDue(){ return this.computed.minimumPaymentDue;}
   set minimumPaymentDue(value){
     if(Thing.isEmpty(value)){ this.computed.minimumPaymentDue = EMPTY}
@@ -159,15 +153,57 @@ class Invoice extends Multiple(Thing, Intangible) {
     this.referencesOrder.orderedItem.forEach((item, index) => {
       total += (item.price * item.orderQuantity);
     })
+    let tax = (total/100) * this.taxPercentage;
+    total += tax;
     return total;
   }
 
-  //WHEN RETURNING, WATCH OUT FOR Id vs ID
+
+  ////////////////////
+  //
+  // NOT STANDARD
+  //
+  /////////////////////
+
+  get dateSent(){ return this.computed.dateSent;}
+  set dateSent(value){
+    if(Thing.isEmpty(value)){ this.computed.dateSent = EMPTY}
+    else if(Thing.isNumber(value)){ this.computed.dateSent = value }
+    else if(Thing.isString(value)){ this.computed.dateSent = value }
+    else{ Thing.logError(this.type+' dateSent must be a number, or string'); }
+  }
+
+  get taxPercentage(){ return this.computed.taxPercentage;}
+  set taxPercentage(value){
+    this.computed.taxPercentage = Number(value);
+  }
+
+  ////////////////////////////
+  //
+  // INSTANCE METHODS
+  //
+  /////////////////////////////
+  subTotal(){
+    let subTotal =0;
+    this.referencesOrder.orderedItem.forEach((item, index) => {
+      subTotal += (item.price * item.orderQuantity);
+    })
+    return subTotal;
+  }
+
+
+  subTotalFormatted(symbol, currency){
+    let amount = `${symbol?symbol:''}${(this.subTotal()/100).toFixed(2)}${currency? currency : ''}`;
+    return amount.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"); ;
+  }
+
+
   totalFormatted(symbol, currency){
     let amount = `${symbol?symbol:''}${(this.totalPaymentDue/100).toFixed(2)}${currency? currency : ''}`;
     return amount.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"); ;
   }
 
+  //WHEN RETURNING, WATCH OUT FOR Id vs ID
 }
 
 module.exports = Invoice;
