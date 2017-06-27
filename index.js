@@ -1,9 +1,10 @@
 const Intangible = require('@josebarrios/intangible')
+const Thing = require('@josebarrios/thing')
 const Multiple = require('aggregation/es6');
 const EMPTY = '';
 const TYPE = 'Invoice'
 
-class Invoice extends Intangible {
+class Invoice extends Multiple(Thing, Intangible) {
 
   static get type(){ return TYPE; }
 
