@@ -183,6 +183,16 @@ class Invoice extends Multiple(Thing, Intangible) {
   // INSTANCE METHODS
   //
   /////////////////////////////
+
+  tax(){
+    let total =0;
+    this.referencesOrder.orderedItem.forEach((item, index) => {
+      total += (item.price * item.orderQuantity);
+    })
+    return (total/100) * this.taxPercentage;
+  }
+
+
   subTotal(){
     let subTotal =0;
     this.referencesOrder.orderedItem.forEach((item, index) => {

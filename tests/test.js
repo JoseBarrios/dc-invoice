@@ -33,7 +33,6 @@ const key = {};
 
 describe('Instance Methods', function() {
   it('instance.taxPercentage', function() {
-    invoice.taxPercentage = 10;
     assert.equal(invoice.taxPercentage, 10);
 
     invoice.taxPercentage = '10';
