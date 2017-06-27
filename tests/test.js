@@ -26,17 +26,19 @@ let orderedItem = [{description:'x', price:2000, orderQuantity:200}, {descriptio
 let submodel = {};
 submodel.orderedItem = orderedItem;
 model.referencesOrder = new Order(submodel)
-let invoice = new Invoice(model);
 
-const key = {};
+let invoice = new Invoice(model);
 
 
 describe('Instance Methods', function() {
   it('instance.taxPercentage', function() {
     assert.equal(invoice.taxPercentage, 10);
 
-    invoice.taxPercentage = '10';
-    assert.equal(invoice.taxPercentage, 10);
+    invoice.taxPercentage = '20';
+    assert.equal(invoice.taxPercentage, 20);
+
+    invoice.taxPercentage = '30%';
+    assert.equal(invoice.taxPercentage, 30);
 
     invoice.taxPercentage = '10%';
     assert.equal(invoice.taxPercentage, 10);
