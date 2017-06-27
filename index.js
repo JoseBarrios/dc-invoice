@@ -175,7 +175,6 @@ class Invoice extends Multiple(Thing, Intangible) {
 
   get taxPercentage(){ return this.computed.taxPercentage;}
   set taxPercentage(value){
-    console.log('SETTING TAX', parseInt(value), 'from', value)
     this.computed.taxPercentage = parseInt(value);
   }
 
