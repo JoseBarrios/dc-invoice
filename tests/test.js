@@ -35,7 +35,7 @@ key.totalPaymentDue = 1000;
 
 describe('Instance Methods', function() {
   it('#total', function() {
-    assert.equal(invoice.formattedTotal, '$10,000.00');
+    assert.equal(invoice.totalFormatted, '$10,000.00');
   });
   it('Invoice.isNumber', function() {
     assert.equal(Invoice.isNumber(1), true);
