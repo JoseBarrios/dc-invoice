@@ -202,7 +202,7 @@ class Invoice extends Multiple(Thing, Intangible) {
     return subTotal;
   }
 
-  taxFormatted(symbol, currency){
+  taxAmountFormatted(symbol, currency){
     let amount = `${symbol?symbol:''}${(this.taxAmount()/100).toFixed(2)}${currency? currency : ''}`;
     return amount.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"); ;
   }

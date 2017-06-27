@@ -54,7 +54,7 @@ describe('Instance Methods', function() {
     assert.equal(invoice.taxAmount(), '100000');
   });
   it('#taxFormatted', function() {
-    assert.equal(invoice.taxFormatted('$'), '$1,000.00');
+    assert.equal(invoice.taxAmountFormatted('$'), '$1,000.00');
   });
   it('#totalFormatted', function() {
     assert.equal(invoice.totalFormatted('$'), '$11,000.00');
