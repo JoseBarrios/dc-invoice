@@ -175,6 +175,7 @@ class Invoice extends Multiple(Thing, Intangible) {
 
   get taxPercentage(){ return this.computed.taxPercentage;}
   set taxPercentage(value){
+    console.log('SETTING TAX', parseInt(value), 'from', value)
     this.computed.taxPercentage = parseInt(value);
   }
 
@@ -184,7 +185,7 @@ class Invoice extends Multiple(Thing, Intangible) {
   //
   /////////////////////////////
 
-  tax(){
+  taxAmount(){
     let total =0;
     this.referencesOrder.orderedItem.forEach((item, index) => {
       total += (item.price * item.orderQuantity);
@@ -199,6 +200,11 @@ class Invoice extends Multiple(Thing, Intangible) {
       subTotal += (item.price * item.orderQuantity);
     })
     return subTotal;
+  }
+
+  taxFormatted(symbol, currency){
+    let amount = `${symbol?symbol:''}${(this.taxAmount()/100).toFixed(2)}${currency? currency : ''}`;
+    return amount.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"); ;
   }
 
 
