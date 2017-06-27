@@ -175,7 +175,7 @@ class Invoice extends Multiple(Thing, Intangible) {
 
   get taxPercentage(){ return this.computed.taxPercentage;}
   set taxPercentage(value){
-    this.computed.taxPercentage = Number(value);
+    this.computed.taxPercentage = parseInt(value);
   }
 
   ////////////////////////////

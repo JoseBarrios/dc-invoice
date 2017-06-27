@@ -13,7 +13,7 @@ model.billingPeriod = {start:'2017-07-01', end:'2017-07-01'};
 model.minimumPaymentDue = 0;
 model.paymentDueDate = '2017-07-01';
 model.dateSent = '2017-07-01';
-model.taxPercentage = 10;
+model.taxPercentage = '10';
 //model.paymentMethod = 'VISA';
 //model.paymentMethodId = '**** **** **** 4444';
 //model.paymentStatus = 'Paid';
@@ -32,7 +32,14 @@ const key = {};
 
 
 describe('Instance Methods', function() {
-  it('instance.tax', function() {
+  it('instance.taxPercentage', function() {
+    invoice.taxPercentage = 10;
+    assert.equal(invoice.taxPercentage, 10);
+
+    invoice.taxPercentage = '10';
+    assert.equal(invoice.taxPercentage, 10);
+
+    invoice.taxPercentage = '10%';
     assert.equal(invoice.taxPercentage, 10);
   });
   it('invoice.totalPaymentDue', function() {
