@@ -21,7 +21,7 @@ model.taxPercentage = '10';
 //model.referencesOrder = ['ORD001', 'ORD002'];
 //model.scheduledPaymentDate = 1234;
 
-let Order = require('@josebarrios/order');
+let Order = require('dc-order');
 let orderedItem = [{description:'x', price:2000, orderQuantity:200}, {description:'y', price:1000, orderQuantity:600}]
 let submodel = {};
 submodel.orderedItem = orderedItem;
